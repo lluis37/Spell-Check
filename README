@@ -1,0 +1,52 @@
+Contributors: Luis Rodriguez (lar322) and Chris O'Neill (cso40)
+
+Compilation and Running:
+    In order to compile spchk.c, simply type "make spchk" into the command line.  
+    In order to run the various tests which we designed for spchk, type into the command line:
+        make test
+            - In order to spell check a text file "test.txt" against the dictionary file contained on the iLab machines
+            - This test checks Requirements 1-5 and 9 listed below
+
+        make test2
+            - In order to attempt to spell check a text file "test2.txt", which has read permissions removed for all users, against the dictionary file contained on the iLab machines
+            - This test checks Requirement 8 listed below
+
+        make testdirectory
+            - In order to acquire and spell check all of the files contained in the directory "testdirectory", and all of the files contained in all of testdirectory's subdirectories, against the dictionary file contained on the iLab machines
+            - This test checks Requirement 7 listed below
+
+        make macdonaldtest
+            - In order to check that spell check ensures that words with capitals in the dictionary must always be written with said capitals
+            - This test checks Requirement 6 listed below
+
+Testing Plan:
+    Requirement 1: Ignoring punctuation marks at the end of a word, and ignoring quotation marks and brackets at the start of a word
+        - Test file "test.txt" which contains a line filled with various punctuation marks at the end of different words, and words with quotation marks and brackets.
+
+    Requirement 2: All parts of a hyphenated word need to be correct in order for the word to be correct
+        - Test file "test.txt" which contains a line with various hyphenated words.
+
+    Requirement 3: Regular capitalization of a word in the dictionary is marked as correct
+        - Test file "test.txt" which contains all valid spellings of the word "hello", as well as an invalid spelling of said word
+
+    Requirement 4: Initial capitalization of a word in the dictionary is marked as correct
+        - Test file "test.txt" which contains all valid spellings of the word "hello", as well as an invalid spelling of said word
+
+    Requirement 5: All capitalization of a word in the dictionary is marked as correct
+        - Test file "test.txt" which contains all valid spellings of the word "hello", as well as an invalid spelling of said word
+
+    Requirement 6: Words with capitals in the dictionary must always be written with said capitals
+        - Test file "MacDonald.txt" which contains the words "MacDonald", "MACDONALD", and "macdonald", and a dictionary which contains the word "MacDonald". If Requirement 6 is met, the words "MACDONALD" and "macdonald" in the text file should be marked as incorrect.
+
+    Requirement 7: Directory traversal successfully acquires all files whose names end with ".txt", and ignores any files or directories whose names begin with "."
+        - A directory "testdirectory" which contains a file ending in ".txt", a file beginning with "." and ending with ".txt", a file beginning with ".", a file that does not begin or end with anything, a directory beginning with ".", and valid directories.
+
+    Requirement 8: Any files that could not be opened result in EXIT_FAILURE
+        - A file "test2.txt" that has open permissions removed for all users (the permissions of the file must be removed after opening tar file).
+        
+    Requirement 9: Mispelled words and their location are printed out in the terminal
+        - Test file "test.txt" which contains mispelled words. The mispelled words are looked for in the terminal.
+
+Design Notes:
+    We chose to acquire all of the text files (by doing a recursive directory traversal if necessary) which had to be spell checked at once, and stored them in a linked list before spell checking any files because we felt as though doing so would help simplify the project. Now that all of the files are in a list, we can simply cycle through said list for the pathnames of all of the files.
+    

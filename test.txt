@@ -1,0 +1,16 @@
+This text includes several test cases that your spell-checking program needs to handle correctly.
+
+1. Trailing punctuation:
+Let's see if it can handle periods, commas, question marks, exclamation marks, and semicolons correctly; also, brackets (like these), quotes "like these", and 'these'!
+
+2. Hyphens:
+A well-known spell-checker should handle mid-day, spell-check, and mother-in-law as correct, assuming mid, day, spell, check, mother, and law are in the dictionary.
+It should also handle not-splled-corektly, BaDDDDDDD-spelling, and macDonald-chck as incorrect spelling, assuming not, spelled, correctly, bad, spelling, MacDonald, and check are in the dictionary.
+
+3. Capitalization:
+hello, Hello, HELLO should all be accepted if "hello" is in the dictionary.
+However, HeLlO should be flagged as incorrect.
+
+Additionally, MacDonald should be accepted if "MacDonald" is in the dictionary. MACDONALD should also be correct, but Macdonald and macdonald should not, assuming the dictionary respects the specified capitalization.
+
+End of tests.
